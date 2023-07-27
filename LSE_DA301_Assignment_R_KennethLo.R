@@ -467,6 +467,11 @@ summary(SLR_NA)
 
 ## 2b) Create a plot (simple linear regression)
 # Basic visualisation.
+# For OLS method, it would be more important to check normality 
+# of the residual of the fitted model so as to evaluate
+# the Gauss Markov assumption with the population error of the
+# statistic model.
+
 # 1, EU Sales
 qqnorm(SLR_EU$residuals)
 qqline(SLR_EU$residuals, col='red', lwd=2)
@@ -528,6 +533,17 @@ pred <-df[1]+test['EU_Sales']*df[2] + test['NA_Sales']*df[3]
 
 # 5. Observations and insights
 # Your observations and insights here...
-# The gloabal sales is positively correlating to EU and NA sales with
-# statistically significant predicting power.
+# The gloabal sales is positively correlating to EU and NA sales by 
+# multiple linear regression model and it was statistically significant
+# for predicting robust prediction.
+
+# For the rest of variables like Genre or platforms, it is not recommended
+# to include them into the current lineaer model by the OLS method.
+# The reason is that such variables effect on all the sales at the same time
+# such that they would be endogenous in the model, thereby resulting
+# to biased estimate of the coeffients. (although the goodness of fit of 
+# the model might not be affected.)
+
+# However, we could still compare the effect of such variables to the Global
+# sales by visuallisations which were just an intepretation of facts.
 ###############################################################################
